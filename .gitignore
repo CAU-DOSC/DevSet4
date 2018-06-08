@@ -1,0 +1,8 @@
+# Visual Studio Code
+.vscode/
+
+# object files
+*.o
+
+# target
+test
