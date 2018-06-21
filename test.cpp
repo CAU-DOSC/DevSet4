@@ -5,6 +5,22 @@
 
 using namespace std;
 
+TEST_CASE("Wrong max_elements", "[Exception Test]")
+{
+    try
+    {
+        IntSetBins bins(-1, 100);
+    }
+    catch (const std::exception &e)
+    {
+        cout << "---- Wrong max_elements Test ----" << endl;
+        cout << e.what() << endl;
+        REQUIRE(true);
+        return;
+    }
+    REQUIRE(false);
+}
+
 TEST_CASE("TEST", "[TEST]")
 {
     IntSetBST bst(30, 30);
@@ -85,5 +101,6 @@ TEST_CASE("INTSETBINS SMOKE TEST", "[SMOKE TEST]")
     {
         cout << v[i] << endl;
     }
+    delete[] v;
     REQUIRE(bins.size() == 30);
 }

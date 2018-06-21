@@ -1,7 +1,7 @@
 #include "intset.hpp"
 #include <stdlib.h>
 
-IntSetBitVec::IntSetBitVec(int max_elements, int max_val) : IntSet(max_elements, max_val)
+IntSetBitVec::IntSetBitVec(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
 	if(max_elements < 0 || max_val < 0) return;
 
