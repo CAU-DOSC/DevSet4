@@ -72,6 +72,7 @@ public:
 class IntSetBitVec : public IntSet
 {
 private:
+    char* bits;
 public:
   IntSetBitVec(unsigned int max_elements, int max_val);
   ~IntSetBitVec();
