@@ -20,7 +20,7 @@ IntSetBitVec::~IntSetBitVec()
 
 void IntSetBitVec::insert(int element)
 {
-	if(element < 0 || element > max_val) return;
+	if(element < 0 || element > max_val && set_size < max_elements) return;
 
 	// if there is no "element" in bitVec
 	if(bits[element/8] == (bits[element/8] & ~(1 << element % 8)))

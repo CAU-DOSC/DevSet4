@@ -14,6 +14,8 @@ TEST_CASE("TEST", "[TEST]")
 
 TEST_CASE("INTSETBITVECTOR TEST", "[bitvector]")
 {
+
+	cout << "-------------bitVec test------------" << endl;
 	int bv_maxEle = 15;
 	int bv_maxVal = 30;
 	IntSetBitVec bv(bv_maxEle, bv_maxVal);
@@ -33,6 +35,7 @@ TEST_CASE("INTSETBITVECTOR TEST", "[bitvector]")
 	REQUIRE(bv.size() == 6);
 
 	SECTION("report"){
+		cout << "bitvec report" << endl;
 		int* v = new int[bv_maxEle];
 		bv.report(v);
 		for(int i = 0; i < (int)bv.size(); i++)
