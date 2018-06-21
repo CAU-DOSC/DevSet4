@@ -12,6 +12,38 @@ TEST_CASE("TEST", "[TEST]")
     REQUIRE(bst.size() == 0);
 }
 
+TEST_CASE("INTSETBITVECTOR TEST", "[bitvector]")
+{
+	int bv_maxEle = 15;
+	int bv_maxVal = 30;
+	IntSetBitVec bv(bv_maxEle, bv_maxVal);
+
+	bv.insert(-1);
+	bv.insert(0);
+	bv.insert(1);
+	bv.insert(bv_maxVal/2);
+	bv.insert(bv_maxVal/3);
+	bv.insert(bv_maxVal-1);
+	bv.insert(bv_maxVal);
+	bv.insert(bv_maxVal+1);
+	bv.insert(bv_maxVal+2);
+
+	cout << "bitvector size : " << bv.size() << endl;
+
+	REQUIRE(bv.size() == 6);
+
+	SECTION("report"){
+		int* v = new int[bv_maxEle];
+		bv.report(v);
+		for(int i = 0; i < (int)bv.size(); i++)
+		{
+			cout << v[i] << endl;
+		}
+		REQUIRE(v[0] == 0);
+		REQUIRE(v[5] == bv_maxVal);
+	}
+}
+
 TEST_CASE("HASH TEST", "[HASH TEST]")
 {
     int *arr = new int[50];

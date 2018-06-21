@@ -61,6 +61,13 @@ public:
 
 class IntSetBitVec : public IntSet
 {
+  private:
+	char* bits;
+  public:
+    IntSetBitVec(int max_elements, int max_val);
+    ~IntSetBitVec();
+    void insert(int element);
+    void const report(int *v);
 private:
 public:
   IntSetBitVec(int max_elements, int max_val);
