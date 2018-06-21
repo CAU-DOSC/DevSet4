@@ -1,9 +1,6 @@
 #include "intset.hpp"
-#include <iostream>
 #include <stdlib.h>
 #include <math.h>
-using std::cout;
-using std::endl;
 
 IntSetBitVec::IntSetBitVec(int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
