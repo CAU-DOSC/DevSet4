@@ -67,3 +67,23 @@ TEST_CASE("INTSETBINS SMOKE TEST", "[SMOKE TEST]")
     delete[] v;
     REQUIRE(bins.size() == 30);
 }
+
+TEST_CASE("INTSETARR TEST", "[setarr]")
+{
+
+    IntSetArr arr(30, 30);
+    arr.insert(-1);
+    arr.insert(100);
+    for (int i = 0; i < 30; i++){
+      arr.insert(i+1);
+    }
+    int *v = new int[30];
+    arr.report(v);
+    cout << "------bitarr test------" << endl;
+    for (int i = 0; i < 30; i++){
+      cout << v[i] << endl;
+    }
+    delete[] v;
+
+
+}

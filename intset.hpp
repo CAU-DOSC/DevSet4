@@ -42,6 +42,8 @@ public:
 class IntSetArr : public IntSet
 {
 private:
+  int n = 0;
+  bool *arr;
 public:
   IntSetArr(unsigned int max_elements, int max_val);
   ~IntSetArr();
