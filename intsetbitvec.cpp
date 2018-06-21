@@ -1,6 +1,6 @@
 #include "intset.hpp"
 
-IntSetBitVec::IntSetBitVec(int max_elements, int max_val) : IntSet(max_elements, max_val)
+IntSetBitVec::IntSetBitVec(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
 }
 

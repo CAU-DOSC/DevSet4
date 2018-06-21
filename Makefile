@@ -14,7 +14,7 @@ clean:
 	rm -f *.o
 	rm -f $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(TARGET).cpp
 	$(CC) $(CFLAGS) -o $(TARGET) test.cpp $(OBJS)
 
 intsetarr.o:

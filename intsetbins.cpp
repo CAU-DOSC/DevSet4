@@ -1,6 +1,6 @@
 #include "intset.hpp"
 
-IntSetBins::IntSetBins(int max_elements, int max_val) : IntSet(max_elements, max_val)
+IntSetBins::IntSetBins(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
 }
 
