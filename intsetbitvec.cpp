@@ -1,18 +1,17 @@
 #include "intset.hpp"
 #include <stdlib.h>
-#include <math.h>
 
 IntSetBitVec::IntSetBitVec(int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
 	if(max_elements < 0 || max_val < 0) return;
 
 	// calloc for making bits to 0000...
-	this->bits = (char*)calloc((int)(max_val/8)+1,sizeof(char));
+	this->bits = new char[((int)(max_val/8)+1)*sizeof(char)];
 }
 
 IntSetBitVec::~IntSetBitVec()
 {
-	free(this->bits);
+	delete[] bits;
 }
 
 void IntSetBitVec::insert(int element)
