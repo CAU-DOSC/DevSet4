@@ -3,10 +3,10 @@
 
 IntSetBitVec::IntSetBitVec(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
-	if(max_elements < 0 || max_val < 0) return;
+	if(max_val < 0 || max_elements > max_val) return;
 
 	// calloc for making bits to 0000...
-	this->bits = new char[((int)(max_val/8)+1)*sizeof(char)];
+	this->bits = new char[((int)(max_val/8)+1)*sizeof(char)]();
 }
 
 IntSetBitVec::~IntSetBitVec()
@@ -16,10 +16,10 @@ IntSetBitVec::~IntSetBitVec()
 
 void IntSetBitVec::insert(int element)
 {
-	if(element < 0 || element > max_val && set_size < max_elements) return;
+	if(element < 0 || element > max_val || set_size >= max_elements) return;
 
 	// if there is no "element" in bitVec
-	if(bits[element/8] == (bits[element/8] & ~(1 << element % 8)))
+	if(bits[element/8] == (bits[element/8] & ~(1 << (element % 8))))
 	{
 		// increase size
 		this->set_size += 1;
