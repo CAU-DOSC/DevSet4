@@ -1,72 +1,127 @@
 #ifndef __INTSET_HPP__
 #define __INTSET_HPP__
+
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <iostream>
+
+using namespace std;
+
+unsigned int MurmurHash2(const void *key, int len, unsigned int seed);
+
 class IntSet
 {
-  protected:
-    unsigned int set_size;
-    const int max_elements;
-    const int max_val;
+protected:
+  static const unsigned int MASK = 0x80000000;
+  unsigned int set_size;
+  const unsigned int max_elements;
+  const int max_val;
 
-  public:
-    virtual void insert(int element) = 0;
-    virtual const void report(int *v) = 0;
-    const unsigned int size()
+public:
+  virtual void insert(int element) = 0;
+  virtual const void report(int *v) = 0;
+  const unsigned int size()
+  {
+    return set_size;
+  }
+  IntSet(unsigned int _max_elements, int _max_val) : set_size(0),
+                                                     max_elements(_max_elements),
+                                                     max_val(_max_val)
+  {
+    /* Check max_elements */
+    if ((_max_elements & MASK) == MASK)
     {
-        return set_size;
+      throw invalid_argument("Max elements must be bigger than 0");
     }
-    IntSet(int _max_elements, int _max_val) : set_size(0),
-                                              max_elements(_max_elements),
-                                              max_val(_max_val) {}
-    virtual ~IntSet() {}
+  }
+  virtual ~IntSet() {}
 };
 
 class IntSetArr : public IntSet
 {
-  private:
-  public:
-    IntSetArr(int max_elements, int max_val);
-    ~IntSetArr();
-    void insert(int element);
-    void const report(int *v);
+private:
+public:
+  IntSetArr(unsigned int max_elements, int max_val);
+  ~IntSetArr();
+  void insert(int element);
+  void const report(int *v);
 };
 
 class IntSetList : public IntSet
 {
-  private:
-  public:
-    IntSetList(int max_elements, int max_val);
-    ~IntSetList();
-    void insert(int element);
-    void const report(int *v);
+private:
+  struct node {
+    int key_val;
+    struct node *next_id;
+  };
+
+  struct node *root_node;
+
+  int n;
+
+
+  void list_insert(int elements) {
+    for (struct node *iter = root_node; iter; iter = iter->next_id) {
+      struct node *next_node = iter->next_id;
+      // find position of node
+      if (!next_node || elements < next_node->key_val) {
+        struct node *new_node = new struct node;
+        new_node->key_val = elements;
+        iter->next_id = new_node;
+        new_node->next_id = next_node;
+        return;
+      }
+      // if elements in list.
+      else if (next_node->key_val == elements) {
+        this->set_size--;
+        return;
+      }
+    }
+  }
+
+public:
+  IntSetList(unsigned int max_elements, int max_val);
+  ~IntSetList();
+  void insert(int element);
+  void const report(int *v);
 };
 
 class IntSetBST : public IntSet
 {
-  private:
-  public:
-    IntSetBST(int max_elements, int max_val);
-    ~IntSetBST();
-    void insert(int element);
-    void const report(int *v);
+private:
+public:
+  IntSetBST(unsigned int max_elements, int max_val);
+  ~IntSetBST();
+  void insert(int element);
+  void const report(int *v);
 };
 
 class IntSetBitVec : public IntSet
 {
-  private:
-  public:
-    IntSetBitVec(int max_elements, int max_val);
-    ~IntSetBitVec();
-    void insert(int element);
-    void const report(int *v);
+private:
+    char* bits;
+public:
+  IntSetBitVec(unsigned int max_elements, int max_val);
+  ~IntSetBitVec();
+  void insert(int element);
+  void const report(int *v);
 };
 
 class IntSetBins : public IntSet
 {
-  private:
-  public:
-    IntSetBins(int max_elements, int max_val);
-    ~IntSetBins();
-    void insert(int element);
-    void const report(int *v);
+private:
+  map<int, vector<int> *> bucket;
+
+public:
+  static inline unsigned int getKey(int element)
+  {
+    return MurmurHash2(&element, 1, 0xfffffff);
+  }
+  IntSetBins(unsigned int max_elements, int max_val);
+  ~IntSetBins();
+  void insert(int element);
+  void const report(int *v);
 };
 #endif
