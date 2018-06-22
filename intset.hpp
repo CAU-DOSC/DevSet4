@@ -42,6 +42,7 @@ public:
 class IntSetArr : public IntSet
 {
 private:
+
   bool *arr;
 public:
   IntSetArr(unsigned int max_elements, int max_val);
@@ -53,11 +54,19 @@ public:
 class IntSetList : public IntSet
 {
 private:
+    struct node *root_node;
+    void deleteAllNodes();
+    void list_insert(int elements);
+
+
 public:
   IntSetList(unsigned int max_elements, int max_val);
   ~IntSetList();
   void insert(int element);
+    
   void const report(int *v);
+    
+    
 };
 
 class IntSetBST : public IntSet

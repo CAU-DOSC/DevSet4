@@ -28,6 +28,10 @@ TEST_CASE("TEST", "[TEST]")
     REQUIRE(bst.size() == 0);
 }
 
+
+
+
+
 TEST_CASE("INTSETBITVECTOR TEST", "[bitvector]")
 {
 
@@ -139,6 +143,7 @@ TEST_CASE("INTSETBINS SMOKE TEST", "[SMOKE TEST]")
     REQUIRE(bins.size() == 30);
 }
 
+
 TEST_CASE("INTSETARR TEST", "[setarr]")
 {
 
@@ -157,4 +162,22 @@ TEST_CASE("INTSETARR TEST", "[setarr]")
     delete[] v;
 
 
+}
+
+
+TEST_CASE("INSSETLIST TEST", "[setlist]")
+{
+    IntSetList list(30,30);
+    list.insert(1);
+    list.insert(100);
+    for (int i = 1; i < 31; i++){
+        list.insert(i+1);
+    }
+    int *v = new int[30];
+    list.report(v);
+    cout << "------bitlist test------"<<endl;
+    for(int i = 0; i<30; i++){
+        cout << v[i] << endl;
+    }
+    delete[] v;
 }
