@@ -63,6 +63,40 @@ TEST_CASE("INTSETBITVECTOR TEST", "[bitvector]")
 
 		delete[] v;
 	}
+
+	SECTION("remove"){
+		cout << "after remove" << endl;
+		
+		bv.remove(-1);
+		bv.remove(0);
+		bv.remove(30);
+		bv.remove(29);
+		
+		int* v = new int[bv_maxEle]();
+		bv.report(v);
+		for(int i = 0; i < (int)bv.size(); i++)
+		{
+			cout << v[i] << endl;
+		}
+		
+		cout << "bitvector size : " << bv.size() << endl;
+		
+		REQUIRE(bv.size() == 3);
+
+		delete[] v;
+	}
+
+	SECTION("contains"){
+		cout << "bitVec contains.." << endl;
+		for (int i = 0; i < bv_maxVal; i++)
+		{
+			if(bv.contains(i))
+			{
+				cout << i << endl;
+			}
+		}
+	}
+
 }
 
 TEST_CASE("HASH TEST", "[HASH TEST]")
