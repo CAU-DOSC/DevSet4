@@ -2,7 +2,7 @@
 
 IntSetArr::IntSetArr(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
-  this->arr = new bool[max_elements];
+  this->arr = new bool[max_elements]();
 }
 
 IntSetArr::~IntSetArr()
