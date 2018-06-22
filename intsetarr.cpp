@@ -6,7 +6,6 @@ IntSetArr::IntSetArr(unsigned int max_elements, int max_val) : IntSet(max_elemen
   for (int i = 0; i < max_val+1; i++){
     this->arr[i] = 0;
   }
-  n = 0;
 }
 
 IntSetArr::~IntSetArr()
@@ -18,7 +17,7 @@ void IntSetArr::insert(int element)
 {
   if (!arr[element]){
     arr[element] = true;
-    n++;
+    this->set_size++;
   }
 }
 
