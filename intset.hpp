@@ -78,6 +78,8 @@ public:
   IntSetBitVec(unsigned int max_elements, int max_val);
   ~IntSetBitVec();
   void insert(int element);
+  void remove(int element);
+  int contains(int element);
   void const report(int *v);
 };
 
