@@ -5,9 +5,6 @@ struct node {
     struct node *next_id;
 };
 
-struct node *root_node;
-
-int n;
 
 
 void IntSetList::list_insert(int elements) {
@@ -31,7 +28,6 @@ void IntSetList::list_insert(int elements) {
 
 IntSetList::IntSetList(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
-  n = 0;
   root_node = new struct node;
   root_node->key_val = -1;
   root_node->next_id = NULL;

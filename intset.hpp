@@ -54,6 +54,7 @@ public:
 class IntSetList : public IntSet
 {
 private:
+    struct node *root_node;
 
 
 public:
