@@ -12,6 +12,8 @@ IntSetArr::~IntSetArr()
 
 void IntSetArr::insert(int element)
 {
+  if(element < 0 || element > max_val || set_size >= max_elements) return;
+
   if (!arr[element]){
     arr[element] = true;
     this->set_size++;
