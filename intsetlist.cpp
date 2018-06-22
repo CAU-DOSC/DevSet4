@@ -18,7 +18,7 @@ void IntSetList::deleteAllNodes()
   delete tmpNode;
   tmpNode = next;
  }
- count = 0;
+    set_size = 0;
  root_node = NULL;
 
 }
@@ -30,7 +30,7 @@ IntSetList::~IntSetList()
 
 void IntSetList::insert(int element)
 {
-  list_insert(elements);
+  list_insert(element);
   this->set_size++;
 }
 
@@ -40,4 +40,4 @@ void const IntSetList::report(int *v)
   for (struct node *iter = root_node->next_id; iter; iter = iter->next_id)
     v[m++] = iter->key_val;
 }
-}
+

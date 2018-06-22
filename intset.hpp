@@ -87,7 +87,9 @@ public:
   IntSetList(unsigned int max_elements, int max_val);
   ~IntSetList();
   void insert(int element);
+    void deleteAllNodes();
   void const report(int *v);
+    
 };
 
 class IntSetBST : public IntSet
