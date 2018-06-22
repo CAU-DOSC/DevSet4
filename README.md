@@ -16,7 +16,7 @@
 | Simple lists              | Kim Chan Il    |  0%      |
 | Binary search tree(list)  | Park Min Seo   |  0%      |
 | Bit vectors               | Kim Jae Hwan   |  0%      |
-| Bins (buckets)            | Park Se Hyun   |  0%      |
+| Bins (buckets)            | Park Se Hyun   |  80%     |
 
 ## How to build
 

@@ -1,7 +1,9 @@
 CC = g++
 CFLAGS = -Wall -std=c++11
 
-OBJS = intsetarr.o intsetbins.o intsetbitvec.o intsetbst.o intsetlist.o
+HASH = MurmurHash2.o
+
+OBJS = intsetarr.o intsetbins.o intsetbitvec.o intsetbst.o intsetlist.o $(HASH)
 TARGET = test
 
 .PHONY: all clean
@@ -12,20 +14,23 @@ clean:
 	rm -f *.o
 	rm -f $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(TARGET).cpp
 	$(CC) $(CFLAGS) -o $(TARGET) test.cpp $(OBJS)
 
-intsetarr:
-	$(CC) $(CFLAGS) -c -o $(@).o $(@).cpp
+intsetarr.o:
+	$(CC) $(CFLAGS) -c $(*).cpp
 
-intsetbins:
-	$(CC) $(CFLAGS) -c -o $(@).o $(@).cpp
+intsetbins.o:
+	$(CC) $(CFLAGS) -c $(*).cpp
 
-intsetbitvec:
-	$(CC) $(CFLAGS) -c -o $(@).o $(@).cpp
+intsetbitvec.o:
+	$(CC) $(CFLAGS) -c $(*).cpp
 
-intsetbst:
-	$(CC) $(CFLAGS) -c -o $(@).o $(@).cpp
+intsetbst.o:
+	$(CC) $(CFLAGS) -c $(*).cpp
 
-intsetlist:
-	$(CC) $(CFLAGS) -c -o $(@).o $(@).cpp
+intsetlist.o:
+	$(CC) $(CFLAGS) -c $(*).cpp
+
+$(HASH):
+	$(CC) $(CFLAGS) -c $(*).cpp

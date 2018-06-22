@@ -1,6 +1,6 @@
 #include "intset.hpp"
 
-IntSetBST::IntSetBST(int max_elements, int max_val) : IntSet(max_elements, max_val)
+IntSetBST::IntSetBST(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
 }
 
