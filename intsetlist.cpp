@@ -7,24 +7,7 @@ struct node {
 
 
 
-void IntSetList::list_insert(int elements) {
-    for (struct node *iter = root_node; iter; iter = iter->next_id) {
-        struct node *next_node = iter->next_id;
-        // find position of node
-        if (!next_node || elements < next_node->key_val) {
-            struct node *new_node = new struct node;
-            new_node->key_val = elements;
-            iter->next_id = new_node;
-            new_node->next_id = next_node;
-            return;
-        }
-        // if elements in list.
-        else if (next_node->key_val == elements) {
-            this->set_size--;
-            return;
-        }
-    }
-}
+
 
 IntSetList::IntSetList(unsigned int max_elements, int max_val) : IntSet(max_elements, max_val)
 {
