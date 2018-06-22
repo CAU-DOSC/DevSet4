@@ -1,17 +1,39 @@
 #include "intset.hpp"
-
-IntSetBST::IntSetBST(int max_elements, int max_val) : IntSet(max_elements, max_val)
+InSetBST::IntSetBST(unsigned int max_element, int max_val) : InSet(max_elements, max_val)
 {
+    struct BSTNode
+    {
+        int data;
+        struct BSTNode*left;
+        struct BSTNode*right;
+    };
+    
 }
-
-IntSetBST::~IntSetBST()
+InSetBST::~InSetBST()
 {
+    delete[] BSTNode;
 }
-
-void IntSetBST::insert(int element)
+void InSetBST::insert(int element)
 {
+    if(root==NULL)
+    {
+        root = element;
+        return root;
+    }
+    else
+    {
+        if(root->element > element)
+        {
+            root->left = insert(root->left, element);
+        }
+        else if(root->element >element)
+        {
+            root -> right = insert(root->right, element);
+        }
+    }
+    return root;
 }
-
-const void IntSetBST::report(int *v)
+const void InSetBST::report(int *v)
 {
+    
 }
