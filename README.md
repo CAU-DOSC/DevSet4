@@ -10,13 +10,13 @@
 
 ## SET Implementation
 
-| Set                       | Name           | Progress |
-| ------------------------- | -------------- | -------- |
-| Arrays                    | Paeng Jin Wook |  0%      |
-| Simple lists              | Kim Chan Il    |  0%      |
-| Binary search tree(list)  | Park Min Seo   |  0%      |
-| Bit vectors               | Kim Jae Hwan   |  0%      |
-| Bins (buckets)            | Park Se Hyun   |  80%     |
+| Set                       | Name             | Progress |
+| ------------------------- | --------------   | -------- |
+| Arrays                    | Paeng Jin Wook   |  100%    |
+| Simple lists              | Kim Chan Il      |  80%     |
+| Binary search tree(list)  | ~~Park Min Seo~~ |  100%    |
+| Bit vectors               | Kim Jae Hwan     |  100%    |
+| Bins (buckets)            | Park Se Hyun     |  100%    |
 
 ## How to build
 
