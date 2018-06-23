@@ -12,7 +12,7 @@ IntSetBins::~IntSetBins()
 
 void IntSetBins::insert(int element)
 {
-    if (set_size == max_elements || element > max_val) 
+    if (this->set_size == this->max_elements || element > this->max_val)
     {
         return;
     }

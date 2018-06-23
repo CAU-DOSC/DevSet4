@@ -1,5 +1,6 @@
 # Visual Studio Code
 .vscode/
+~/.vscode-root/
 
 # object files
 *.o

@@ -5,9 +5,21 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
-#include <iostream>
 
 using namespace std;
+
+struct node
+{
+  int key_val;
+  struct node *next_id;
+};
+
+struct bstNode
+{
+  int val;
+  struct bstNode *left;
+  struct bstNode *right;
+};
 
 unsigned int MurmurHash2(const void *key, int len, unsigned int seed);
 
@@ -42,8 +54,8 @@ public:
 class IntSetArr : public IntSet
 {
 private:
-
   bool *arr;
+
 public:
   IntSetArr(unsigned int max_elements, int max_val);
   ~IntSetArr();
@@ -54,24 +66,30 @@ public:
 class IntSetList : public IntSet
 {
 private:
-    struct node *root_node;
-    void deleteAllNodes();
-    void list_insert(int elements);
-
+  struct node *root_node;
+  void deleteAllNodes();
+  void list_insert(int elements);
 
 public:
   IntSetList(unsigned int max_elements, int max_val);
   ~IntSetList();
   void insert(int element);
-    
+
   void const report(int *v);
-    
-    
 };
 
 class IntSetBST : public IntSet
 {
 private:
+  struct bstNode *root_node = nullptr;
+  vector<struct bstNode *> node_vector;
+  inline void setBstNode(int element, struct bstNode *node)
+  {
+    node->val = element;
+    node->left = nullptr;
+    node->right = nullptr;
+  }
+
 public:
   IntSetBST(unsigned int max_elements, int max_val);
   ~IntSetBST();
@@ -82,7 +100,8 @@ public:
 class IntSetBitVec : public IntSet
 {
 private:
-    char* bits;
+  char *bits;
+
 public:
   IntSetBitVec(unsigned int max_elements, int max_val);
   ~IntSetBitVec();
